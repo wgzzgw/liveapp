@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+帧动画：顺序播放一组预先定义好的图片，类似于电影播放
+创建帧动画第一步：XML文件定义一个AnimationDrawable-->
+<animation-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/porche_b1"
+        android:duration="50"/>
+    <item android:drawable="@drawable/porche_b2"
+        android:duration="50"/>
+    <item android:drawable="@drawable/porche_b3"
+        android:duration="50"/>
+    <item android:drawable="@drawable/porche_b4"
+        android:duration="50"/>
+</animation-list>

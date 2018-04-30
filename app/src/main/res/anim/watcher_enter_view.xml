@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--创建view动画第一步：创建动画的XML文件，translate移动view
+android:duration:动画持续时间
+android:fromXDelta：X的起始值
+android:toXDelta：X的结束值
+-100%：相对于自己而言-->
+<translate
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="500"
+    android:fromXDelta="-100%"
+    android:toXDelta="0">
+</translate>

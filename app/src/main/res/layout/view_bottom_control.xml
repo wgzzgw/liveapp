@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+    <!--聊天功能-->
+    <ImageView
+        android:id="@+id/chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/round_bkg_small"
+        android:padding="5dp"
+        android:src="@drawable/bottom_chat" />
+    <!--退出直播房间功能-->
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/round_bkg_small"
+        android:padding="5dp"
+        android:src="@drawable/bottom_close" />
+    <!--礼物功能-->
+    <!-- android:layout_alignTop  将给定控件的顶部边缘与给定ID控件的顶部对齐-->
+    <ImageView
+        android:id="@+id/gift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/chat"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/round_bkg_small"
+        android:padding="5dp"
+        android:src="@drawable/icon_gift" />
+    <!--礼物操作功能-->
+    <ImageView
+        android:id="@+id/option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/chat"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/round_bkg_small"
+        android:padding="5dp"
+        android:src="@drawable/icon_op_open" />
+
+</>

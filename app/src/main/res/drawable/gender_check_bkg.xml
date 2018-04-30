@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--实现静态绘图中的事件反馈，通过给不同的事件设置不同的图像，从而实现在程序中根据用户输入，返回不同的效果-->
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--选中了view图片-->
+    <item android:drawable="@drawable/gray" android:state_checked="true" />
+    <item android:drawable="@drawable/transparent" android:state_checked="false" />
+    <!--默认的背景图片-->
+    <item android:drawable="@drawable/transparent" />
+</selector>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--创建view动画第一步：创建动画的XML文件，set标签表示动画集合
+alpha：改变VIEW的透明度
+android:fromAlpha：透明度的起始值
+android:toAlpha ：透明度的结束值-->
+<set
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:duration="500"
+        android:fromXDelta="-100%"
+        android:toXDelta="100%p" />
+    <alpha
+        android:duration="500"
+        android:fromAlpha="1"
+        android:toAlpha="0" />
+</set>
