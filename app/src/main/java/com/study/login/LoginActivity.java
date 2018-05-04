@@ -115,7 +115,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 finish();
             }
-
             @Override
             public void onError(String module, int errCode, String errMsg) {
                 //错误码 code 和错误描述 desc，可用于定位请求失败原因
@@ -126,8 +125,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void register() {
         //注册新用户，跳转到注册页面。
-        Intent intent = new Intent();
-        intent.setClass(this, RegisterActivity.class);
+        Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
         startActivity(intent);
     }
     private void getSelfInfo() {

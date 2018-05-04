@@ -3,7 +3,10 @@ package com.study.hostlive;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -69,7 +72,7 @@ public class HostLiveActivity extends AppCompatActivity {
     private DanmuView mDanmuView;//弹幕容器view
     private GiftRepeatView giftRepeatView;//连发礼物动画存放容器view
     private GiftFullView giftFullView;//全屏礼物动画存放容器view
-    private HeartLayout heartLayout;//心形点赞View
+    private  HeartLayout heartLayout;//心形点赞View
     private Timer heartTimer = new Timer();//心形礼物动画定时器
     private FlashlightHelper flashlightHelper;//闪光灯辅助类
    /* private Timer heartBeatTimer = new Timer();//心跳定时器*/
@@ -142,7 +145,7 @@ public class HostLiveActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host_live);
-
+        setSupportActionBar(null);
         findAllViews();
         createLive();//创建直播
         //setDefault();//设置底部view默认显示BottomControlView
@@ -287,7 +290,6 @@ public class HostLiveActivity extends AppCompatActivity {
                 });
             }
         });
-
         mChatListView = (ChatMsgListView) findViewById(R.id.chat_list);
         mDanmuView = (DanmuView) findViewById(R.id.danmu_view);
         giftRepeatView = (GiftRepeatView) findViewById(R.id.gift_repeat_view);
@@ -296,6 +298,8 @@ public class HostLiveActivity extends AppCompatActivity {
     }
 
     private void createLive() {
+        hostControlState = new HostControlState();
+        flashlightHelper = new FlashlightHelper();
         mRoomId = getIntent().getIntExtra("roomId", -1);
 
         if (mRoomId < 0) {

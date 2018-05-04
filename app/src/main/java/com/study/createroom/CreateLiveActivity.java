@@ -28,6 +28,7 @@ import com.tencent.TIMUserProfile;
 * 创建直播准备工作界面
 * */
 public class CreateLiveActivity extends AppCompatActivity {
+    private Toolbar titlebar;
     private View mSetCoverView;//设置直播封面view
     private ImageView mCoverImg;//view中的背景封面
     private TextView mCoverTipTxt;//view中的设置话语提示
@@ -60,7 +61,7 @@ public class CreateLiveActivity extends AppCompatActivity {
         //创建直播房间参数类
         CreateRoomRequest.CreateRoomParam param = new CreateRoomRequest.CreateRoomParam();
         TIMUserProfile selfProfile = MyApplication.getApplication().getSelfProfile();
-        param.userId = selfProfile.getIdentifier();
+       param.userId = selfProfile.getIdentifier();
         param.userAvatar = selfProfile.getFaceUrl();
         String nickName = selfProfile.getNickName();
         param.userName = TextUtils.isEmpty(nickName) ? selfProfile.getIdentifier() : nickName;
@@ -117,7 +118,7 @@ public class CreateLiveActivity extends AppCompatActivity {
         mCreateRoomBtn.setOnClickListener(clickListener);
     }
     private void setupTitlebar() {
-        Toolbar titlebar = (Toolbar) findViewById(R.id.titlebar);
+        titlebar = (Toolbar) findViewById(R.id.titlebar);
         titlebar.setTitle("开始我的直播");
         titlebar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(titlebar);

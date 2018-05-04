@@ -6,15 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.study.hostlive.HostLiveActivity">
-    <com.study.view.TitleView
-        android:id="@+id/title_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
     <com.tencent.ilivesdk.view.AVRootView
         android:id="@+id/live_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white" />
+    <com.study.view.TitleView
+        android:id="@+id/title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.study.view.TitleView>
     <FrameLayout
         android:id="@+id/bottom_view"
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </FrameLayout>
-    <!--<LinearLayout
+    <LinearLayout
         android:id="@+id/chat_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,8 +45,8 @@
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_weight="1" />
-    </LinearLayout>-->
-    <LinearLayout
+    </LinearLayout>
+   <!-- <LinearLayout
         android:id="@+id/chat_list_view"
         android:layout_width="350dp"
         android:layout_height="250dp"
@@ -56,7 +57,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
          />
-    </LinearLayout>
+    </LinearLayout>-->
     <com.study.view.DanmuView
         android:id="@+id/danmu_view"
         android:layout_width="match_parent"
@@ -73,4 +74,9 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_above="@id/chat_list_view" />
+    <tyrantgit.widget.HeartLayout
+        android:id="@+id/heart_layout"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true" />
 </com.study.widget.SizeChangeRelativeLayout>

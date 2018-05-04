@@ -4,17 +4,21 @@
     android:id="@+id/activity_live_prepare"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/titlebarlayout"
+    android:layout_alignParentTop="true">
     <android.support.v7.widget.Toolbar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimaryDark" />
-
+</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/titlebar"
+        android:layout_below="@id/titlebarlayout"
         android:orientation="vertical">
 
         <FrameLayout

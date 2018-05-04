@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.MyApplication;
 import com.example.interactiveliveapp.R;
 import com.study.main.MainActivity;
 import com.study.utils.ImgUtils;
@@ -25,6 +26,7 @@ import com.study.utils.PicChooserHelper;
 import com.tencent.TIMCallBack;
 import com.tencent.TIMFriendGenderType;
 import com.tencent.TIMFriendshipManager;
+import com.tencent.TIMManager;
 import com.tencent.TIMUserProfile;
 import com.tencent.TIMValueCallBack;
 
@@ -73,9 +75,8 @@ public class EditProfileFragment extends Fragment {
         TIMFriendshipManager.getInstance().getSelfProfile(new TIMValueCallBack<TIMUserProfile>() {
             @Override
             public void onError(int i, String s) {
-                Toast.makeText(getActivity(), "获取信息失败:" + s, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "获取信息失败:" + i+s, Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onSuccess(TIMUserProfile timUserProfile) {
                 //获取自己信息成功

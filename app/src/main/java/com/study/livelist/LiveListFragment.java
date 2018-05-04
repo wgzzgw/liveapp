@@ -61,7 +61,7 @@ public class LiveListFragment extends Fragment {
     }
     private void findAllViews(View view) {
 
-        Toolbar titlebar = (Toolbar) view.findViewById(R.id.titlebar);
+        titlebar = (Toolbar) view.findViewById(R.id.titlebar);
         mLiveListView = (ListView) view.findViewById(R.id.live_list);
         mLiveListAdapter = new LiveListAdapter(getActivity().getApplicationContext());
         mLiveListView.setAdapter(mLiveListAdapter);

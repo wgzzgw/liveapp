@@ -9,11 +9,12 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TabHost;
-
 import com.example.interactiveliveapp.R;
 import com.study.createroom.CreateLiveActivity;
 import com.study.editprofile.EditProfileFragment;
 import com.study.livelist.LiveListFragment;
+
+import org.w3c.dom.Text;
 
 /*
 * APP主界面
@@ -28,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         findAllViews();
+        setSupportActionBar(null);
         setTabs();
     }
     private void findAllViews() {

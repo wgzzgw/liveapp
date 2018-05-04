@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.interactiveliveapp">
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
     <application
         android:name="com.MyApplication"
         android:allowBackup="true"
@@ -17,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.study.createroom.CreateLiveActivity" />
         <activity android:name="com.study.register.RegisterActivity" />
         <activity android:name="com.study.editprofile.EditProfileActivity" />
         <activity android:name="com.study.hostlive.HostLiveActivity"

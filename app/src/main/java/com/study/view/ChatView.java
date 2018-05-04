@@ -105,7 +105,7 @@ public class ChatView  extends LinearLayout {
                 sendChatMsg();}
                 else{
                     long curTime = (new Date()).getTime();//本地单击发送按钮的时间
-                    if(curTime-prelongTim<8000){
+                    if(curTime-prelongTim>2000){
                         prelongTim = (new Date()).getTime();//记录本次点击发送按钮的时间
                         sendChatMsg();
                     }else{
@@ -134,6 +134,7 @@ public class ChatView  extends LinearLayout {
             }
             customCmd.setParam(mChatContent.getText().toString());
             mOnChatSendListener.onChatSend(customCmd);//设置消息内容，回调出去
+            mChatContent.setText("");
         }
     }
 }

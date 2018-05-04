@@ -47,7 +47,6 @@ public class RegisterActivity extends AppCompatActivity {
         mPasswordEdt = (EditText) findViewById(R.id.password);
         mConfirmPasswordEt = (EditText) findViewById(R.id.confirm_password);
         mRegisterBtn = (Button) findViewById(R.id.register);
-
     }
     private void setListeners() {
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
@@ -132,9 +131,10 @@ public class RegisterActivity extends AppCompatActivity {
                 //跳转到修改用户信息界面。
                 Intent intent = new Intent();
                 intent.setClass(RegisterActivity.this,EditProfileActivity.class);
+                getSelfInfo();
                 startActivity(intent);
                 //获取初始数据
-                getSelfInfo();
+
             }
 
             @Override

@@ -45,7 +45,7 @@ public class UserInfoDialog  extends TransParentDialog {
         findAllViews(view);
         bindDataToViews();
         //调用父类方法设置dialog宽为屏幕的80%，高为WRAP_CONTENT
-        setWidthAndHeight(activity.getWindow().getDecorView().getWidth() * 80 / 100, WindowManager.LayoutParams.WRAP_CONTENT);
+        setWidthAndHeight(activity.getWindow().getDecorView().getWidth() * 90 / 100, WindowManager.LayoutParams.WRAP_CONTENT);
     }
     private void findAllViews(View view) {
         user_close = (ImageView) view.findViewById(R.id.user_close);
@@ -66,7 +66,7 @@ public class UserInfoDialog  extends TransParentDialog {
     private void bindDataToViews() {
 
         String avatarUrl = userInfo.getFaceUrl();
-        if (!TextUtils.isEmpty(avatarUrl)) {
+        if (TextUtils.isEmpty(avatarUrl)) {
             ImgUtils.loadRound(R.drawable.default_avatar, user_avatar);
         } else {
             ImgUtils.loadRound(avatarUrl, user_avatar);

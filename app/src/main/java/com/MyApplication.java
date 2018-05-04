@@ -7,6 +7,7 @@ import com.squareup.leakcanary.LeakCanary;
 import com.study.editprofile.CustomProfile;
 import com.study.request.HeartBeatRequest;
 import com.study.utils.QnUploadHelper;
+import com.tencent.TIMFriendshipSettings;
 import com.tencent.TIMManager;
 import com.tencent.TIMUserProfile;
 import com.tencent.ilivesdk.ILiveSDK;
@@ -35,16 +36,16 @@ public class MyApplication extends Application {
 
         //初始化腾讯直播SDK，参数二：腾讯云对应SdkAppId，参数三：腾讯云账号集成体系accountType
         ILiveSDK.getInstance().initSdk(getApplicationContext(), 1400083930, 25371);
+        //用户信息字段的配置
+        List<String> customInfos = new ArrayList<String>();
+        customInfos.add(CustomProfile.CUSTOM_RENZHENG);
+        customInfos.add(CustomProfile.CUSTOM_LEVEL);
+        customInfos.add(CustomProfile.CUSTOM_GET);
+        customInfos.add(CustomProfile.CUSTOM_SEND);
+        TIMManager.getInstance().initFriendshipSettings(CustomProfile.allBaseInfo, customInfos);
         //初始化直播场景
         mLiveConfig = new ILVLiveConfig();
         ILVLiveManager.getInstance().init(mLiveConfig);
-        //用户信息字段的配置
-        List<String> customInfos = new ArrayList<String>();
-        customInfos.add(CustomProfile.CUSTOM_GET);
-        customInfos.add(CustomProfile.CUSTOM_SEND);
-        customInfos.add(CustomProfile.CUSTOM_LEVEL);
-        customInfos.add(CustomProfile.CUSTOM_RENZHENG);
-        TIMManager.getInstance().initFriendshipSettings(CustomProfile.allBaseInfo, customInfos);
         //初始化七牛云
         QnUploadHelper.init("sS8WL_Q-GoCmGK2W9N74pNiqE-dJxIVEHG45WQCy",
                 "1Vz-rd3j78oDvNlniTVoEcAveAB2aCSxu3uwWLER",
