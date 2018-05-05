@@ -21,7 +21,7 @@ public class GetLiveListRequest extends BaseRequest {
         public int pageIndex;//页下标
 
         public String toUrlParam() {
-            return "&pageIndex=" + pageIndex;
+            return "&=pageIndex" + pageIndex;
         }
     }
     /*

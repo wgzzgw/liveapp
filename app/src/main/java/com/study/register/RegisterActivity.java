@@ -61,6 +61,13 @@ public class RegisterActivity extends AppCompatActivity {
         mTitlebar.setTitle("注册新用户");
         mTitlebar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mTitlebar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mTitlebar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
     private void register() {
         String accountStr = mAccountEdt.getText().toString();

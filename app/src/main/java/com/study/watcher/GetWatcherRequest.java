@@ -15,9 +15,9 @@ public class GetWatcherRequest extends BaseRequest {
     /*
 * 观众列表请求，参数action=getWatcher,与服务端对应
 * */
-    private static final String HOST = "http://imoocbearlive.butterfly.mopaasapp.com/roomServlet?action=getWatcher";
+    private static final String HOST = "http://interactiveliveapp.butterfly.mopaasapp.com/roomServlet?action=getWatcher";
 
-    public String getUrl(String roomId) {
+    public String getUrl(int roomId) {
         return HOST + "&=roomId" + roomId;
     }
     @Override

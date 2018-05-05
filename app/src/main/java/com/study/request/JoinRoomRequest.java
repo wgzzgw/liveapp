@@ -23,7 +23,7 @@ public class JoinRoomRequest extends BaseRequest {
     * */
     public static class JoinRoomParam {
         public String userId;
-        public String roomId;
+        public int roomId;
     }
     /*
     * 返回请求url

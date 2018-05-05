@@ -1,5 +1,6 @@
 package com.study.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -16,6 +17,10 @@ import android.widget.TextView;
 import com.example.interactiveliveapp.R;
 import com.study.model.ChatMsgInfo;
 import com.study.utils.ImgUtils;
+import com.study.widget.UserInfoDialog;
+import com.tencent.TIMFriendshipManager;
+import com.tencent.TIMUserProfile;
+import com.tencent.TIMValueCallBack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +64,22 @@ public class ChatMsgListView extends RelativeLayout {
         });
     }
     private void showUserInfoDialog(String senderId) {
+        List<String> ids = new ArrayList<String>();
+        ids.add(senderId);
+        TIMFriendshipManager.getInstance().getUsersProfile(ids, new TIMValueCallBack<List<TIMUserProfile>>() {
+            @Override
+            public void onError(int i, String s) {
+            }
+
+            @Override
+            public void onSuccess(List<TIMUserProfile> timUserProfiles) {
+                Context context = ChatMsgListView.this.getContext();
+                if(context instanceof Activity) {
+                    UserInfoDialog userInfoDialog = new UserInfoDialog((Activity) context, timUserProfiles.get(0));
+                    userInfoDialog.show();
+                }
+            }
+        });
     }
     //添加单条消息
     public void addMsgInfo(ChatMsgInfo info) {

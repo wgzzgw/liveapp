@@ -14,10 +14,10 @@ public class QuitRoomRequest extends BaseRequest {
     /*
   * 退出直播房间请求，参数action=quit,与服务端对应
   * */
-    private static final String Action = "http://imoocbearlive.butterfly.mopaasapp.com/roomServlet?action=quit";
+    private static final String Action = "http://interactiveliveapp.butterfly.mopaasapp.com/roomServlet?action=quit";
     private static final String RequestParamKey_RoomId = "roomId";
     private static final String RequestParamKey_UserId = "userId";
-    public String getUrl(String roomId, String userId) {
+    public String getUrl(int roomId, String userId) {
         return Action
                 + "&" + RequestParamKey_RoomId + "=" + roomId
                 + "&" + RequestParamKey_UserId + "=" + userId

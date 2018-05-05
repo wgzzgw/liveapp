@@ -122,6 +122,13 @@ public class CreateLiveActivity extends AppCompatActivity {
         titlebar.setTitle("开始我的直播");
         titlebar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(titlebar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        titlebar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
     private void choosePic() {
         if (mPicChooserHelper == null) {

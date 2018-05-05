@@ -69,7 +69,6 @@ public class ChatView  extends LinearLayout {
         * */
         setOrientation(LinearLayout.HORIZONTAL);
         setGravity(Gravity.CENTER_VERTICAL);
-        setBackgroundColor(Color.parseColor("#ccffffff"));
         //获取手机屏幕密度参数
         int paddingPx = (int) (getResources().getDisplayMetrics().density * 10 + 0.5f);
         setPadding(paddingPx, paddingPx, paddingPx, paddingPx);

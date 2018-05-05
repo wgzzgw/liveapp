@@ -33,7 +33,6 @@ public class MyApplication extends Application {
         super.onCreate();
         app = this;
         appContext = getApplicationContext();
-
         //初始化腾讯直播SDK，参数二：腾讯云对应SdkAppId，参数三：腾讯云账号集成体系accountType
         ILiveSDK.getInstance().initSdk(getApplicationContext(), 1400083930, 25371);
         //用户信息字段的配置
@@ -87,9 +86,8 @@ public class MyApplication extends Application {
                         if (mHeartBeatRequest == null) {
                             mHeartBeatRequest = new HeartBeatRequest();
                         }
-                        String roomId = mRoomId + "";
                         String userId = getSelfProfile().getIdentifier();
-                        String url = mHeartBeatRequest.getUrl(roomId, userId);
+                        String url = mHeartBeatRequest.getUrl(mRoomId, userId);
                         mHeartBeatRequest.request(url);
                     }
         };

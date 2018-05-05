@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -77,6 +78,7 @@ public class HostLiveActivity extends AppCompatActivity {
     private FlashlightHelper flashlightHelper;//闪光灯辅助类
    /* private Timer heartBeatTimer = new Timer();//心跳定时器*/
     /*private HeartBeatRequest mHeartBeatRequest = null;//心跳请求*/
+   private long mExitTime;
     private HostControlDialog.OnControlClickListener controlClickListener = new HostControlDialog.OnControlClickListener() {
         @Override
         public void onBeautyClick() {
@@ -145,7 +147,6 @@ public class HostLiveActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host_live);
-        setSupportActionBar(null);
         findAllViews();
         createLive();//创建直播
         //setDefault();//设置底部view默认显示BottomControlView
@@ -454,7 +455,7 @@ public class HostLiveActivity extends AppCompatActivity {
                 //调用后台接口，更新房间信息
                 JoinRoomRequest joinRoomRequest=new JoinRoomRequest();
                 JoinRoomRequest.JoinRoomParam joinRoomParam=new JoinRoomRequest.JoinRoomParam();
-                joinRoomParam.roomId=mRoomId+"";
+                joinRoomParam.roomId=mRoomId;
                 joinRoomParam.userId=MyApplication.getApplication().getSelfProfile().getIdentifier();
                 //发起加入房间请求
                 String requestUrl = joinRoomRequest.getUrl(joinRoomParam);
@@ -520,14 +521,9 @@ public class HostLiveActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        quitLive();
         heartTimer.cancel();//防止内存泄漏
        /* heartBeatTimer.cancel();//同上*/
         MyApplication.getApplication().stopHeartBeat();
-    }
-    @Override
-    public void onBackPressed() {
-        quitLive();//按back键后退出直播
     }
     //退出直播
     private void quitLive() {
@@ -559,11 +555,10 @@ public class HostLiveActivity extends AppCompatActivity {
         });
         //发送退出消息给服务器
         QuitRoomRequest request = new QuitRoomRequest();
-        String roomId = mRoomId +"";
         String userId = MyApplication.getApplication().getSelfProfile().getIdentifier();
-        String url = request.getUrl(roomId, userId);
-        request.request(url);
-    }
+    String url = request.getUrl(mRoomId, userId);
+    request.request(url);
+}
     private void logout() {
         finish();
     }
@@ -579,5 +574,24 @@ public class HostLiveActivity extends AppCompatActivity {
                 MyApplication.getApplication().setSelfProfile(timUserProfile);
             }
         });
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            exit();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void exit() {
+        if ((System.currentTimeMillis() - mExitTime) > 2000) {
+            Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+            mExitTime = System.currentTimeMillis();
+        } else {
+            finish();
+            quitLive();//按back键后退出直播
+        }
     }
 }

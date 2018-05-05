@@ -440,7 +440,7 @@ public class WatcherActivity extends AppCompatActivity {
                 //调用后台接口，更新房间信息
                 JoinRoomRequest joinRoomRequest=new JoinRoomRequest();
                 JoinRoomRequest.JoinRoomParam joinRoomParam=new JoinRoomRequest.JoinRoomParam();
-                joinRoomParam.roomId=mRoomId+"";
+                joinRoomParam.roomId=mRoomId;
                 joinRoomParam.userId=MyApplication.getApplication().getSelfProfile().getIdentifier();
                 //发起加入房间请求
                 String requestUrl = joinRoomRequest.getUrl(joinRoomParam);
@@ -532,7 +532,7 @@ public class WatcherActivity extends AppCompatActivity {
                 });
             }
         });
-        String watcherRequestUrl = watcherRequest.getUrl(mRoomId + "");
+        String watcherRequestUrl = watcherRequest.getUrl(mRoomId);
         watcherRequest.request(watcherRequestUrl);
     }
     private void startHeartAnim() {
@@ -572,7 +572,6 @@ public class WatcherActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         heartTimer.cancel();//防止内存泄漏
-        quitRoom();
        /* heartBeatTimer.cancel();//同上*/
         MyApplication.getApplication().stopHeartBeat();
     }
@@ -610,9 +609,8 @@ public class WatcherActivity extends AppCompatActivity {
         });
         //发送退出消息给服务器
         QuitRoomRequest request = new QuitRoomRequest();
-        String roomId = mRoomId + "";
         String userId = MyApplication.getApplication().getSelfProfile().getIdentifier();
-        String url = request.getUrl(roomId, userId);
+        String url = request.getUrl(mRoomId, userId);
         request.request(url);
         logout();
     }
